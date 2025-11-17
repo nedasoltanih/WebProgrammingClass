@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details of task {{task.title}}</title>
+</head>
+<body>
+<p>Title: {{task.title}}</p>
+<span style="color: {% if task.not_done %}red{% endif %};">
+    <p>Due Date: {{task.due_date}}</p>
+    <p>Due Time: {{task.due_time}}</p>
+</span>
+<p>Done:
+    {% if task.done %}
+        Done
+    {% else %}
+        Not done
+    {% endif %}
+</p>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of tasks</title>
+</head>
+<body>
+<ul>
+  {% for task in tasks %}
+    <li>
+        <a href="/todo/{{ task.pk }}/">{{ task.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+</body>
+</html>
