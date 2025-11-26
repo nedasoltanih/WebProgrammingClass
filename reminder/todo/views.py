@@ -1,10 +1,24 @@
-from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView, TemplateView
 from .models import Task
 
-def index(request):
-    tasks = Task.objects.all()
-    return render(request, 'tasks.html', {'tasks': tasks})
+class TaskListView(ListView):
+    model = Task
+    template_name = 'tasks.html'
+    context_object_name = 'tasks'
 
-def task_detail(request, pk):
-    task = get_object_or_404(Task, pk=pk)
-    return render(request, 'details.html', {'task': task})
+
+class TaskDetailView(DetailView):
+     model = Task
+     template_name = 'details.html'
+     context_object_name = 'task'
+
+
+class TaskCreateView(CreateView):
+    model = Task
+    template_name = 'create.html'
+    fields = '__all__'
+
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    template_name = 'create.html'
