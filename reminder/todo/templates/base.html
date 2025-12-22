@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+{% load static %}
+<img src="{% static 'todo/logo.png' %}" alt="logo">
+<p><a href="{% url 'index' %}" style="color:blue;">Home</a></p>
+<p><a href="{% url 'new' %}" style="color:blue;">Create new task</a></p>
+<p>----------------</p>
+{% block content %}{% endblock %}
+</body>
+</html>

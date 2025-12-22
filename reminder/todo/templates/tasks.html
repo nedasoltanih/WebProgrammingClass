@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List of tasks</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Create new task{% endblock %}
+{% block content %}
 <ul>
   {% for task in tasks %}
-    <li>
-        <a href="/todo/{{ task.pk }}/">{{ task.title }}</a>
+    <li style="color: {% cycle 'blue' 'red' %};">
+        <a href="/todo/{{ task.pk }}/">{{ task.title|title }}</a>
     </li>
+    {% empty %}
+        <p>No tasks created!</p>
+        <p>Create your first task <a href="{% url 'new' %}">here</a></p>
   {% endfor %}
 </ul>
-</body>
-</html>
+{% endblock %}

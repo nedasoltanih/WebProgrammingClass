@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Details of task {{task.title}}</title>
-</head>
-<body>
-<p>Title: {{task.title}}</p>
+{% extends "base.html" %}
+{% block title %}Create new task{% endblock %}
+{% block content %}
+<p>Title: {{ task.title|title }}</p>
 <span style="color: {% if task.not_done %}red{% endif %};">
     <p>Due Date: {{task.due_date}}</p>
     <p>Due Time: {{task.due_time}}</p>
 </span>
-<p>Done:
-    {% if task.done %}
-        Done
-    {% else %}
-        Not done
-    {% endif %}
-</p>
-</body>
-</html>
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Update</button>
+</form>
+<form method="post" action="{% url 'delete' task.pk %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+{% endblock %}
