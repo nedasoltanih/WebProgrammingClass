@@ -1,0 +1,19 @@
+{% extends "polls/base.html" %}
+{% block content %}
+<p>List of 2 latest questions form total number of {{num_questions}}:</p>
+{% if object_list %}
+    <ul>
+    {% for question in object_list %}
+        <li><a href="{% url 'detail' question.pk %}">
+            {{ question.question_text }}</a></li>
+        <p>
+            {% if question.check_gmail %}
+                GMAIL it is!
+            {% endif %}
+        </p>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions are available.</p>
+{% endif %}
+{% endblock %}

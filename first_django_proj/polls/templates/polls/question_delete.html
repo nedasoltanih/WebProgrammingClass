@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    {{ object.question_text }}
+</p>
+<p>
+    {{ object.pub_date }}
+</p>
+<p>
+    {{ object.language }}
+</p>
+<form method="post"> {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+</body>
+</html>

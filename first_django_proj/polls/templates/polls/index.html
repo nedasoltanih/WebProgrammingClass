@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>List of 5 latest questions:</p>
+{% if lq %}
+    <ul>
+    {% for question in lq %}
+        <li><a href="/polls/{{ question.q_slug }}/">
+            {{ question.question_text }}</a></li>
+        <p>
+            {% if question.check_gmail %}
+                GMAIL it is!
+            {% endif %}
+        </p>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions are available.</p>
+{% endif %}
+</body>
+</html>

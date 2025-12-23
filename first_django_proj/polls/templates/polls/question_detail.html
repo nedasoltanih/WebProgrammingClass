@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    {{ object.question_text }}
+</p>
+<p>
+    {{ object.pub_date|date:"d M Y" }}
+</p>
+<p>
+    {{ object.language }}
+</p>
+<p>
+Icon: {{ object.icon|default:"No icon available" }}
+</p>
+{# some comment here #}
+{% comment %}
+some more comments here
+line 2
+{% endcomment %}
+</body>
+</html>
