@@ -2,6 +2,7 @@ import os
 from email.policy import default
 import logging
 
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
@@ -64,7 +65,7 @@ class QuestionDetailView(DetailView):
 
 
 def results(request, question_id):
-    response = "You're looking at the results of question %s."
+    response = _("You're looking at the results of question %s.")
     print(request.session.items())
     request.COOKIES['test'] = 'hello world'
     return HttpResponse(response % question_id)
@@ -77,6 +78,7 @@ class NewQuestionView(CreateView):
     model = Question
     fields = ["question_text", 'pub_date', 'name']
     success_url = "/polls/success/"
+    success_message = "Question created successfully."
 
 # def success(request):
 #     return HttpResponse("Success!")

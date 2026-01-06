@@ -6,7 +6,7 @@ from .managers import EmployerManager,JobSeekerManager,MyManager
 class Person (models.Model):
     name = models.CharField(max_length=255)
     role = models.CharField(max_length=1, choices={("J", "Jobseeker"), ("E", "Employer")})
-    email = models.EmailField()
+    email = models.EmailField(null=True)
 
     employers = EmployerManager()
     jobseekers = JobSeekerManager()

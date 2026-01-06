@@ -1,5 +1,6 @@
 from django.core.validators import EmailValidator
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 
@@ -16,6 +17,9 @@ class Question(models.Model):
     language = models.CharField(max_length=200, choices=langs, default="en")
     q_slug = models.CharField(max_length=200, default="", blank=True, unique=True, editable=False)
     icon = models.ImageField(upload_to="polls/images/", null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('QuestionDetailView', args=[str(self.id)])
 
     def __str__(self):
         return self.question_text

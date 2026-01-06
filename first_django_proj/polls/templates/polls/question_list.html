@@ -1,11 +1,23 @@
 {% extends "polls/base.html" %}
 {% block content %}
+{% load poll_extras %}
+{% current_time "%Y-%m-%d %I:%M %p" as the_time %}
+<p>The time is {{ the_time }}.</p>
+{% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{{ request.COOKIES.last_login }}
 <p>List of 2 latest questions form total number of {{num_questions}}:</p>
 {% if object_list %}
     <ul>
     {% for question in object_list %}
         <li><a href="{% url 'detail' question.pk %}">
-            {{ question.question_text }}</a></li>
+            {{ question.question_text|cut:"a" }}</a>
+        {% language question %}</li>
         <p>
             {% if question.check_gmail %}
                 GMAIL it is!
